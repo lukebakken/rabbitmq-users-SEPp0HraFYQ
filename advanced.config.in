@@ -1,0 +1,25 @@
+[
+    {rabbit, [
+        {tcp_listeners, []},
+        {ssl_listeners, [5671]},
+        {ssl_options, [
+            {cacertfile, "@@PWD@@/certs/cacert.pem"},
+            {certfile, "@@PWD@@/certs/ECC384cert.pem"},
+            {keyfile, "@@PWD@@/certs/ECC384key.pem"},
+            {depth, 10},
+            {versions, ['tlsv1.3']},
+            {verify, verify_peer},
+            {fail_if_no_peer_cert, true}
+        ]}
+    ]},
+    {rabbitmq_management, [
+        {listener, [{port, 15671}]},
+        {ip,       "127.0.0.1"},
+        {ssl, true},
+        {ssl_opts, [
+            {cacertfile, "@@PWD@@/certs/cacert.pem"},
+            {certfile, "@@PWD@@/certs/ECC384cert.pem"},
+            {keyfile, "@@PWD@@/certs/ECC384key.pem"}
+        ]}
+    ]}
+].
